@@ -49,12 +49,12 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="399.0" layoutY="228.0" prefHeight="25.0" prefWidth="324.0" />
-            <JFXTextField layoutX="399.0" layoutY="266.0" prefHeight="25.0" prefWidth="324.0" />
-            <JFXTextField layoutX="398.0" layoutY="303.0" prefHeight="25.0" prefWidth="324.0" />
-            <JFXTextField layoutX="397.0" layoutY="336.0" prefHeight="25.0" prefWidth="324.0" />
-            <JFXTextField layoutX="398.0" layoutY="367.0" prefHeight="25.0" prefWidth="324.0" />
-            <JFXButton buttonType="RAISED" layoutX="315.0" layoutY="505.0"  prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #00868b;" text="Cliente" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+            <JFXTextField fx:id="tfNome" layoutX="399.0" layoutY="228.0" prefHeight="25.0" prefWidth="324.0" />
+            <JFXTextField fx:id="tfCpf" layoutX="399.0" layoutY="266.0" prefHeight="25.0" prefWidth="324.0" />
+            <JFXTextField fx:id="tfEmail" layoutX="398.0" layoutY="303.0" prefHeight="25.0" prefWidth="324.0" />
+            <JFXTextField fx:id="tfEndereco" layoutX="397.0" layoutY="336.0" prefHeight="25.0" prefWidth="324.0" />
+            <JFXTextField fx:id="tfSenha" layoutX="398.0" layoutY="367.0" prefHeight="25.0" prefWidth="324.0" />
+            <JFXButton buttonType="RAISED" layoutX="315.0" layoutY="505.0" onAction="#inserirCliente" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #00868b;" text="Cliente" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
@@ -64,12 +64,12 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="447.0" layoutY="505.0"  prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #00868b;" text="Empresa" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+            <JFXButton buttonType="RAISED" layoutX="447.0" layoutY="505.0" onAction="#inserirEmpresa" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #00868b;" text="Empresa" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="579.0" layoutY="505.0"  prefHeight="33.0" prefWidth="141.0" style="-fx-background-color: #00868b;" text="Funcionário" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+            <JFXButton buttonType="RAISED" layoutX="579.0" layoutY="505.0" onAction="#inserirFuncionario" prefHeight="33.0" prefWidth="141.0" style="-fx-background-color: #00868b;" text="Funcionário" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>

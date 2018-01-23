@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Empresa extends Conta{
 
 	private String nome;
-	private int cnpj;
+	private String cnpj;
 	private String endereco;
 	private String email;
 	private ArrayList<Pedido> pedidos;
 	
-	public Empresa(String nome, int cnpj, String endereco, String email, String login, String senha){
+	public Empresa(String nome, String cnpj, String endereco, String email, String login, String senha){
 		
 		super(login, senha);
 		this.nome = nome; 
@@ -20,6 +20,9 @@ public class Empresa extends Conta{
 		this.pedidos = new ArrayList<Pedido>();
 	}
 	
+	public Empresa(){
+		
+	}
 	
 	public void addPedido(Pedido p) {
 		pedidos.add(p);
@@ -55,11 +58,11 @@ public class Empresa extends Conta{
 		this.nome = nome;
 	}
 
-	public int getCnpj() {
+	public String getCnpj() {
 		return cnpj;
 	}
 
-	public void setCnpj(int cnpj) {
+	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
 

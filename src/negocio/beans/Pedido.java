@@ -21,6 +21,10 @@ public class Pedido {
 		this.descricao = descricao;
 	}
 	
+	public Pedido(){
+		
+	}
+	
 	public Cliente getCliente() {
 		return cliente;
 	}

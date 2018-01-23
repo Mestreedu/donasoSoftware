@@ -25,6 +25,10 @@ public class Produto {
 		
 	}
 	
+	public Produto(){
+		
+	}
+	
 	public void addPostagem(String p) {
 		postagens.add(p);
 	}

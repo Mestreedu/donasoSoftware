@@ -11,6 +11,10 @@ public class Conta {
 		this.senha  = senha;
 	}
 	
+	public Conta(){
+		
+	}
+	
 	public String getLogin() {
 		return login;
 	}

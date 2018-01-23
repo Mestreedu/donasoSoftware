@@ -3,11 +3,11 @@ package negocio.beans;
 public class Funcionario extends Conta{
 
 	private String nome;
-	private int cpf;
+	private String cpf;
 	private String endereco;
 	private String email;
 	
-	public Funcionario(String nome, int cpf, String endereco, String email, String login, String senha){
+	public Funcionario(String nome, String cpf, String endereco, String email, String login, String senha){
 		
 		super(login, senha);
 		this.nome = nome; 
@@ -16,6 +16,10 @@ public class Funcionario extends Conta{
 		this.email = email;
 	}
 
+	public Funcionario(){
+		
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -24,11 +28,11 @@ public class Funcionario extends Conta{
 		this.nome = nome;
 	}
 
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
