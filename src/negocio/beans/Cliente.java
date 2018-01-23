@@ -1,29 +1,31 @@
 package negocio.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Cliente extends Conta{
+@SuppressWarnings("serial")
+public class Cliente extends Conta implements Serializable{
 
 	private String nome;
 	private String cpf;
 	private String endereco;
 	private String email;
 	private ArrayList<Pedido> pedidos;
-	
+
 	public Cliente(String nome, String cpf, String endereco, String email, String login, String senha){
-		
+
 		super(cpf, senha);
-		this.nome = nome; 
+		this.nome = nome;
 		this.cpf = cpf;
 		this.endereco = endereco;
 		this.email = email;
 		this.pedidos = new ArrayList<Pedido>();
 	}
-	
+
 	public Cliente(){
-		
+
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -55,11 +57,11 @@ public class Cliente extends Conta{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public void addPedido(Pedido p) {
 		pedidos.add(p);
 	}
-	
+
 	public void deletePedido(Pedido p) {
 		if(p!=null) {
 			for (int j = 0; j < pedidos.size(); j++) {
@@ -69,7 +71,7 @@ public class Cliente extends Conta{
 		} else {
 			System.out.println("Pedido Invalido!");
 		}
-		
+
 	}
 
 	public ArrayList<Pedido> getPedidos() {
@@ -79,6 +81,6 @@ public class Cliente extends Conta{
 	public void setPedidos(ArrayList<Pedido> pedidos) {
 		this.pedidos = pedidos;
 	}
-	
-	
+
+
 }

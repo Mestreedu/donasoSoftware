@@ -3,11 +3,11 @@ package negocio.beans;
 import java.util.Random;
 
 public class Pedido {
-	
+
 	private Cliente cliente;
 	private int id;
 	private String descricao;
-	
+
 	public Pedido(Cliente cliente, String descricao){
 		Random r = new Random();
 		this.cliente = cliente;
@@ -17,14 +17,14 @@ public class Pedido {
 				this.setId(r.nextInt(999999999));
 			}
 		}
-		
+
 		this.descricao = descricao;
 	}
-	
+
 	public Pedido(){
-		
+
 	}
-	
+
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -52,6 +52,6 @@ public class Pedido {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
-	
+
+
 }

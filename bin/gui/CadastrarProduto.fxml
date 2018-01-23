@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CadastrarProdutoController">
+   <center>
+      <AnchorPane prefHeight="680.0" prefWidth="1020.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="64.0" fitWidth="231.0" layoutX="36.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/donaso.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="52.0" fitWidth="64.0" layoutX="855.0" layoutY="552.0" opacity="0.39" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
+               <image>
+                  <Image url="@../imagens/logo.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00858a7a" height="405.0" layoutX="111.0" layoutY="108.0" stroke="TRANSPARENT" strokeType="INSIDE" width="499.0" />
+            <Label layoutX="259.0" layoutY="124.0" text="Cadastrar Produto" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="165.0" layoutY="203.0" text="Nome" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="134.0" layoutY="281.0" text="Descrição" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="196.0" layoutY="176.0" text="ID" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="231.0" layoutY="168.0" prefHeight="25.0" prefWidth="205.0" />
+            <JFXTextField layoutX="232.0" layoutY="196.0" prefHeight="25.0" prefWidth="205.0" />
+            <JFXTextArea layoutX="230.0" layoutY="232.0" prefHeight="62.0" prefWidth="205.0" text="&#10;" />
+            <JFXButton buttonType="RAISED" layoutX="329.0" layoutY="458.0" prefHeight="20.0" prefWidth="115.0" style="-fx-background-color: #00868b;" text="Salvar" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="646.0" layoutY="107.0" onAction="#perfil" prefHeight="72.0" prefWidth="194.0" style="-fx-background-color: #00868b;" text="Meu perfil" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="646.0" layoutY="209.0" onAction="#voltar" prefHeight="72.0" prefWidth="194.0" style="-fx-background-color: #00868b;" text="Voltar" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="886.0" layoutY="27.0" onAction="#sair" prefHeight="0.0" prefWidth="98.0" style="-fx-background-color: #00868b;" text="Sair" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

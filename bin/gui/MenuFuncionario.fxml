@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuClienteController">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuFuncionarioController">
    <center>
       <AnchorPane prefHeight="680.0" prefWidth="1020.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
@@ -23,7 +23,7 @@
                   <Font name="Arial Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="646.0" layoutY="107.0" onAction="#perfil" prefHeight="72.0" prefWidth="194.0" style="-fx-background-color: #00868b;" text="Meu perfil" textFill="WHITE">
+            <JFXButton layoutX="646.0" layoutY="107.0" onAction="#visualizarPerfil" prefHeight="72.0" prefWidth="194.0" style="-fx-background-color: #00868b;" text="Meu perfil" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
@@ -43,6 +43,7 @@
                   <Font name="Arial Bold" size="12.0" />
                </font>
             </JFXButton>
-         </children></AnchorPane>
+         </children>
+      </AnchorPane>
    </center>
 </BorderPane>

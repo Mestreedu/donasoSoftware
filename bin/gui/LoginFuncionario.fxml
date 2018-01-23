@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginFuncionarioController">
+   <center>
+      <AnchorPane prefHeight="680.0" prefWidth="1020.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00858a7a" height="281.0" layoutX="250.0" layoutY="240.0" stroke="TRANSPARENT" strokeType="INSIDE" width="531.0" />
+            <ImageView fitHeight="64.0" fitWidth="231.0" layoutX="36.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/donaso.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="52.0" fitWidth="64.0" layoutX="855.0" layoutY="552.0" opacity="0.39" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
+               <image>
+                  <Image url="@../imagens/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="357.0" layoutY="345.0" text="Usuário" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="tfLogin" layoutX="440.0" layoutY="338.0" prefHeight="25.0" prefWidth="226.0" />
+            <JFXPasswordField fx:id="tfSenha" layoutX="440.0" layoutY="389.0" prefHeight="25.0" prefWidth="226.0" />
+            <JFXButton buttonType="RAISED" layoutX="575.0" layoutY="464.0" onAction="#Login" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #00868b;" text="Entrar" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="369.0" layoutY="397.0" text="Senha " textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="177.0" layoutY="357.0" style="-fx-rotate: 270;" text="Profissional" textFill="#ffffff9b">
+               <font>
+                  <Font name="Arial Bold" size="42.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

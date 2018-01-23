@@ -1,25 +1,28 @@
 package negocio.beans;
 
-public class Funcionario extends Conta{
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Funcionario extends Conta implements Serializable{
 
 	private String nome;
 	private String cpf;
 	private String endereco;
 	private String email;
-	
+
 	public Funcionario(String nome, String cpf, String endereco, String email, String login, String senha){
-		
+
 		super(login, senha);
-		this.nome = nome; 
+		this.nome = nome;
 		this.cpf = cpf;
 		this.endereco = endereco;
 		this.email = email;
 	}
 
 	public Funcionario(){
-		
+
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}

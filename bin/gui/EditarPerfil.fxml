@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EditarPerfilController">
+   <center>
+      <AnchorPane prefHeight="680.0" prefWidth="1020.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="64.0" fitWidth="231.0" layoutX="36.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/donaso.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="52.0" fitWidth="64.0" layoutX="855.0" layoutY="552.0" opacity="0.39" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
+               <image>
+                  <Image url="@../imagens/logo.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="886.0" layoutY="27.0" onAction="#sair" prefHeight="0.0" prefWidth="98.0" style="-fx-background-color: #00868b;" text="Sair" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="646.0" layoutY="107.0" onAction="#voltar" prefHeight="72.0" prefWidth="194.0" style="-fx-background-color: #00868b;" text="Voltar" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="646.0" layoutY="209.0" onAction="#produto" prefHeight="72.0" prefWidth="194.0" style="-fx-background-color: #00868b;" text="Produto" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00858a7a" height="478.0" layoutX="111.0" layoutY="108.0" stroke="TRANSPARENT" strokeType="INSIDE" width="446.0" />
+            <JFXButton layoutX="270.0" layoutY="528.0" prefHeight="35.0" prefWidth="132.0" style="-fx-background-color: #00868b;" text="Salvar" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="269.0" layoutY="130.0" prefHeight="27.0" prefWidth="157.0" text="Editar Dados" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="184.0" layoutY="199.0" text="Nome " textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="145.0" layoutY="234.0" text="CPF/CNPJ" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="184.0" layoutY="269.0" text="Email" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="151.0" layoutY="300.0" text="Endereço" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="251.0" layoutY="192.0" prefHeight="25.0" prefWidth="269.0" />
+            <JFXTextField layoutX="251.0" layoutY="227.0" prefHeight="25.0" prefWidth="269.0" />
+            <JFXTextField layoutX="251.0" layoutY="262.0" prefHeight="25.0" prefWidth="269.0" />
+            <JFXTextField layoutX="251.0" layoutY="294.0" prefHeight="25.0" prefWidth="269.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

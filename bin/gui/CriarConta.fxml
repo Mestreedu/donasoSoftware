@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CriarContaController">
+   <center>
+      <AnchorPane prefHeight="680.0" prefWidth="1020.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="64.0" fitWidth="231.0" layoutX="36.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/donaso.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="52.0" fitWidth="64.0" layoutX="855.0" layoutY="552.0" opacity="0.39" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
+               <image>
+                  <Image url="@../imagens/logo.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00858a7a" height="405.0" layoutX="250.0" layoutY="171.0" stroke="TRANSPARENT" strokeType="INSIDE" width="531.0" />
+            <Label layoutX="333.0" layoutY="236.0" text="Nome" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="293.0" layoutY="275.0" text="CPF/CNPJ" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="334.0" layoutY="308.0" text="Email" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="303.0" layoutY="342.0" text="Endereço" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="329.0" layoutY="375.0" text="Senha" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="tfNome" layoutX="399.0" layoutY="228.0" prefHeight="25.0" prefWidth="324.0" />
+            <JFXTextField fx:id="tfCpf" layoutX="399.0" layoutY="266.0" prefHeight="25.0" prefWidth="324.0" />
+            <JFXTextField fx:id="tfEmail" layoutX="398.0" layoutY="303.0" prefHeight="25.0" prefWidth="324.0" />
+            <JFXTextField fx:id="tfEndereco" layoutX="397.0" layoutY="336.0" prefHeight="25.0" prefWidth="324.0" />
+            <JFXTextField fx:id="tfSenha" layoutX="398.0" layoutY="367.0" prefHeight="25.0" prefWidth="324.0" />
+            <JFXButton buttonType="RAISED" layoutX="315.0" layoutY="505.0" onAction="#inserirCliente" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #00868b;" text="Cliente" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="415.0" layoutY="462.0" text="Ser cadastrado como:" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="447.0" layoutY="505.0" onAction="#inserirEmpresa" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #00868b;" text="Empresa" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="579.0" layoutY="505.0" onAction="#inserirFuncionario" prefHeight="33.0" prefWidth="141.0" style="-fx-background-color: #00868b;" text="Funcionário" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

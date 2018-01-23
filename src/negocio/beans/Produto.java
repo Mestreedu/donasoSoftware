@@ -1,9 +1,11 @@
 package negocio.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Produto {
+@SuppressWarnings("serial")
+public class Produto implements Serializable {
 
 	private String nome;
 	private String descricao;
@@ -12,7 +14,7 @@ public class Produto {
 	private ArrayList<Funcionario> funcionarios;
 	private ArrayList<String> comentarios;
 	private ArrayList<String> postagens;
-	
+
 	public Produto(String nome, String descricao, Cliente cliente, ArrayList<Funcionario> funcionarios){
 		this.cliente = cliente;
 		this.nome = nome;
@@ -22,17 +24,17 @@ public class Produto {
 		this.postagens = new ArrayList<String>();
 		Random r = new Random();
 		this.id = r.nextInt(999999999);
-		
+
 	}
-	
+
 	public Produto(){
-		
+
 	}
-	
+
 	public void addPostagem(String p) {
 		postagens.add(p);
 	}
-	
+
 	public void addComentario(String c) {
 		comentarios.add(c);
 	}
@@ -80,6 +82,6 @@ public class Produto {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
+
+
 }
