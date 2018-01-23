@@ -16,12 +16,12 @@ import negocio.beans.Cliente;
 public class RepositorioClientes implements IRepositorioCliente, Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	private static IRepositorioCliente instanceUser;
-	
+
 	private ArrayList<Cliente> clientes;
 	private int next;
 
@@ -41,7 +41,7 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 		if (instanceUser == null) {
 			return;
 		}
-		File out = new File("Clientes\\Repositorio.db");
+		File out = new File("RepositorioClientes.db");
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
 
@@ -60,11 +60,11 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 			}
 		}
 	}
-	
+
 	private static RepositorioClientes ler() {
 		RepositorioClientes instanciaLocal = null;
 
-		File in = new File("Clientes\\Repositorio.db");
+		File in = new File("RepositorioClientes.db");
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
 
@@ -96,11 +96,11 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 			return true;
 		}
 			return false;
-	
+
 	}
-	
-	
-	
+
+
+
 	private int procurarIndice(String login) {
 		int indice = 0;
 		boolean found = false;
@@ -130,7 +130,7 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 
 
 	@Override
-	public boolean remover(String login) { // mudei pra boolean 
+	public boolean remover(String login) { // mudei pra boolean
 		if (existe(login)) {
 			Cliente c = procurar(login);
 			this.clientes.remove(c);
@@ -143,7 +143,7 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 		}
 
 	}
-	
+
 	@Override
 	public boolean alterarCliente(String login) {
 		if (getInstance().existe(login)) {
@@ -151,7 +151,7 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 			clientes.set(clientes.indexOf(c), c);
 			RepositorioClientes.salvar();
 			return true;
-		} 
+		}
 			return false;
 
 	}

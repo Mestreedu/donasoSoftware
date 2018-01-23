@@ -16,11 +16,11 @@ import negocio.beans.Produto;
 public class RepositorioProduto implements IRepositorioProduto, Serializable{
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * 
+	 *
 	 */
 	private static IRepositorioProduto instanceUser;
 	private ArrayList<Produto> produtos;
@@ -45,7 +45,7 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable{
 		if (instanceUser == null) {
 			return;
 		}
-		File out = new File("Produtos\\Repositorio.db");
+		File out = new File("RepositorioProdutos.db");
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
 
@@ -64,11 +64,11 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable{
 			}
 		}
 	}
-	
+
 	private static RepositorioProduto ler() {
 		RepositorioProduto instanciaLocal = null;
 
-		File in = new File("Produtos\\Repositorio.db");
+		File in = new File("RepositorioProdutos.db");
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
 
@@ -97,7 +97,7 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable{
 			RepositorioProduto.salvar();
 			return true;
 		}
-		return false;		
+		return false;
 	}
 
 	private int procurarIndice(String nome) {
@@ -133,10 +133,10 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable{
 			this.produtos.remove(p);
 			RepositorioProduto.salvar();
 			return true;
-		} 
+		}
 		return false;
 	}
-	
+
 	@Override
 	public boolean alterarProduto(String nome) {
 		if (getInstance().existe(nome)) {

@@ -16,12 +16,12 @@ import negocio.beans.Funcionario;
 public class RepositorioFuncionario implements IRepositorioFuncionario, Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	private static IRepositorioFuncionario instanceUser;
-	
+
 	private ArrayList<Funcionario> funcionarios;
 	private int next;
 
@@ -41,7 +41,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario, Serializ
 		if (instanceUser == null) {
 			return;
 		}
-		File out = new File("Funcionarios\\Repositorio.db");
+		File out = new File("RepositorioFuncionarios.db");
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
 
@@ -60,11 +60,11 @@ public class RepositorioFuncionario implements IRepositorioFuncionario, Serializ
 			}
 		}
 	}
-	
+
 	private static RepositorioFuncionario ler() {
 		RepositorioFuncionario instanciaLocal = null;
 
-		File in = new File("Funcionarios\\Repositorio.db");
+		File in = new File("RepositorioFuncionarios.db");
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
 
@@ -131,10 +131,10 @@ public class RepositorioFuncionario implements IRepositorioFuncionario, Serializ
 			this.funcionarios.remove(f);
 			RepositorioFuncionario.salvar();
 			return true;
-		} 
+		}
 		return false;
 	}
-	
+
 	@Override
 	public boolean alterarCliente(String login) {
 		if (getInstance().existe(login)) {

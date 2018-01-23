@@ -16,12 +16,12 @@ import negocio.beans.Empresa;
 public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	private static IRepositorioEmpresa instanceUser;
-	
+
 	private ArrayList<Empresa> empresas;
 	private int next;
 
@@ -41,7 +41,7 @@ public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 		if (instanceUser == null) {
 			return;
 		}
-		File out = new File("Empresa\\Repositorio.db");
+		File out = new File("RepositorioEmpresa.db");
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
 
@@ -60,11 +60,11 @@ public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 			}
 		}
 	}
-	
+
 	private static RepositorioEmpresa ler() {
 		RepositorioEmpresa instanciaLocal = null;
 
-		File in = new File("Empresa\\Repositorio.db");
+		File in = new File("RepositorioEmpresa.db");
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
 
@@ -133,7 +133,7 @@ public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 		}
 		return false;
 	}
-	
+
 	@Override
 	public boolean alterarEmpresa(String login) {
 		if (getInstance().existe(login)) {
@@ -145,7 +145,7 @@ public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 		return false;
 	}
 
-	
+
 	@Override
 	public boolean existe(String login) {
 		boolean existe = false;
