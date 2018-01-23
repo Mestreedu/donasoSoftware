@@ -1,6 +1,6 @@
 package gui;
 
-public class EditarPerfilController {
+public class CadastrarProdutoController {
 
 	public void voltar(){
 		try{
@@ -20,9 +20,9 @@ public class EditarPerfilController {
 		}
 	}
 	
-	public void produto(){
+	public void perfil(){
 		try{
-			ScreenManager.getInstance().getTelaProduto();
+			ScreenManager.getInstance().getVisualizarPerfil();
 		}
 		catch(Exception e){
 			System.out.println(e.getMessage());

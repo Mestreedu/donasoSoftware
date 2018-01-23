@@ -8,7 +8,9 @@ public class ScreenManager {
 
 	BorderPane border, paneLoginCliente, paneMenuCliente, paneMenuEmpresa;
 	BorderPane paneMenuFuncionario, paneTelaInicio, paneCriarConta, paneVisualizarPerfil, paneEditarPerfil;
-	FXMLLoader loginCliente, menuCliente, menuEmpresa, menuFuncionario, telaInicio, criarConta, visualizarPerfil, editarPerfil;
+	BorderPane paneCadastrarProduto, paneTelaProduto;
+	FXMLLoader loginCliente, menuCliente, menuEmpresa, menuFuncionario, telaInicio, criarConta, visualizarPerfil, editarPerfil, 
+				cadastrarProduto, telaProduto;
 
 	
 	public static ScreenManager instancia;
@@ -38,7 +40,10 @@ public class ScreenManager {
 			this.paneVisualizarPerfil = visualizarPerfil.load();
 			editarPerfil = new FXMLLoader(this.getClass().getResource("EditarPerfil.fxml"));
 			this.paneEditarPerfil = editarPerfil.load();
-			
+			cadastrarProduto = new FXMLLoader(this.getClass().getResource("CadastrarProduto.fxml"));
+			this.paneCadastrarProduto = cadastrarProduto.load();
+			telaProduto = new FXMLLoader(this.getClass().getResource("TelaProduto.fxml"));
+			this.paneTelaProduto = telaProduto.load();
 			
 			this.border = Main.getRoot();
 		} catch (IOException e) {
@@ -76,6 +81,14 @@ public class ScreenManager {
 	
 	public void getEditarPerfil(){	
 		border.setCenter(this.paneEditarPerfil);
+	}
+	
+	public void getCadastrarProduto(){	
+		border.setCenter(this.paneCadastrarProduto);
+	}
+	
+	public void getTelaProduto(){	
+		border.setCenter(this.paneTelaProduto);
 	}
 	
 }

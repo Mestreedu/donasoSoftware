@@ -23,7 +23,7 @@
                   <Image url="@../imagens/logo.png" />
                </image>
             </ImageView>
-            <JFXButton layoutX="646.0" layoutY="209.0" prefHeight="72.0" prefWidth="194.0" style="-fx-background-color: #00868b;" text="Produto" textFill="WHITE">
+            <JFXButton layoutX="646.0" layoutY="209.0" onAction="#produto" prefHeight="72.0" prefWidth="194.0" style="-fx-background-color: #00868b;" text="Produto" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
@@ -64,22 +64,22 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="254.0" layoutY="198.0" text="esse texto muda " textFill="WHITE">
+            <Label fx:id="labelNome" layoutX="254.0" layoutY="198.0" text="esse texto muda " textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="255.0" layoutY="232.0" text="esse texto muda " textFill="WHITE">
+            <Label fx:id="labelCpf" layoutX="255.0" layoutY="232.0" text="esse texto muda " textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="255.0" layoutY="269.0" text="esse texto muda " textFill="WHITE">
+            <Label fx:id="labelEmail" layoutX="255.0" layoutY="269.0" text="esse texto muda " textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="254.0" layoutY="300.0" text="esse texto muda " textFill="WHITE">
+            <Label fx:id="labelEndereco" layoutX="254.0" layoutY="300.0" text="esse texto muda " textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>

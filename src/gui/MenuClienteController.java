@@ -20,4 +20,12 @@ public class MenuClienteController {
 		}
 	}
 	
+	public void produto(){
+		try{
+			ScreenManager.getInstance().getTelaProduto();
+		}
+		catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+	}
 }

@@ -26,8 +26,8 @@ public class CriarContaController {
 			c.setNome(tfEndereco.getText());
 			c.setNome(tfSenha.getText());
 				
-			//Fachada.getInstance().getRepositorioC().cadastrar(c);
-			Fachada.getInstance().cadastrarCliente(c);
+			Fachada.getInstance().getRepositorioC().cadastrar(c);
+			//Fachada.getInstance().cadastrarCliente(c);
 			ScreenManager.getInstance().getMenuCliente();
 			
 		}

@@ -38,7 +38,7 @@
                   <Image url="@../imagens/donaso.jpeg" />
                </image>
             </ImageView>
-            <JFXButton layoutX="646.0" layoutY="209.0" prefHeight="72.0" prefWidth="194.0" style="-fx-background-color: #00868b;" text="Produto" textFill="WHITE">
+            <JFXButton layoutX="646.0" layoutY="209.0" onAction="#produto" prefHeight="72.0" prefWidth="194.0" style="-fx-background-color: #00868b;" text="Produto" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
