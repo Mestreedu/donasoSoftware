@@ -1,6 +1,7 @@
 package gui;
 
 public class MenuClienteController {
+	
 
 	public void perfil(){
 		try{
@@ -28,4 +29,10 @@ public class MenuClienteController {
 			System.out.println(e.getMessage());
 		}
 	}
-}
+	
+	
+	}
+	
+	
+	
+

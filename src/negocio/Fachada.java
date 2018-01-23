@@ -80,6 +80,8 @@ public class Fachada implements IFachada {
 	 */
 	@Override
 	public boolean loginCliente(String cpf, String senha) {
+		Login.setUsuario(cpf);
+		Login.setSenha(senha);
 		return controladorCliente.loginCliente(cpf, senha);
 	}
 
@@ -130,6 +132,8 @@ public class Fachada implements IFachada {
 	 */
 	@Override
 	public boolean loginEmpresa(String cnpj, String senha) {
+		Login.setUsuario(cnpj);
+		Login.setSenha(senha);
 		return controladorEmpresa.loginEmpresa(cnpj, senha);
 	}
 
@@ -180,6 +184,8 @@ public class Fachada implements IFachada {
 	 */
 	@Override
 	public boolean loginFuncionario(String cpf, String senha) {
+		Login.setUsuario(cpf);
+		Login.setSenha(senha);
 		return controladorFuncionario.loginFuncionario(cpf, senha);
 	}
 
@@ -262,6 +268,41 @@ public class Fachada implements IFachada {
 		}
 		return permissao;
 	}
+
+	public String getNomeUsuarioLogado () {
+		return Login.getUsuario();
+	}
+
+	public void setNomeUsuarioLogado(String usuario) {
+		Login.setUsuario(usuario);
+	}
 	
+	public String getSenhaUsuarioLogado() {
+		return Login.getSenha();
+	}
 	
+	public void setSenhaUsuarioLogado(String senha) {
+		Login.setSenha(senha);
+	}
+
+}
+
+class Login{
+	  private static String usuario;
+	  private static String senha;
+	  public static void setUsuario(String usuario){
+	     Login.usuario = usuario;
+	  }
+	  public static String getUsuario(){
+	     return usuario;
+	  }
+	  public static String getSenha() {
+		 return senha;
+	  }
+	  public static void setSenha(String senha){
+		  Login.senha = senha;
+	  }
+	  public static boolean autentica(){
+	    return true;
+	  }
 }

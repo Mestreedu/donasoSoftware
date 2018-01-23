@@ -1,5 +1,7 @@
 package gui;
 
+import javax.swing.JOptionPane;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -26,4 +28,16 @@ public class LoginClienteController {
 		}
 	}
 	
+	public void voltar() {
+		try{
+			ScreenManager.getInstance().getTelaInicio();
+		}
+		catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
 }
+	
+	

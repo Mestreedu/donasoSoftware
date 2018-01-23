@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
@@ -46,6 +47,11 @@
                   <Font name="Arial Bold" size="64.0" />
                </font>
             </Label>
+            <JFXButton buttonType="RAISED" layoutX="946.0" layoutY="640.0" onAction="#voltar" style="-fx-background-color: #00868b;" text="Voltar" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
    </center>

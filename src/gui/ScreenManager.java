@@ -59,7 +59,7 @@ public class ScreenManager {
 		border.setCenter(this.paneLoginCliente);	
 	}
 	
-	public void getMenuCliente(){	
+	public void getMenuCliente(){
 		border.setCenter(this.paneMenuCliente);
 	}
 	

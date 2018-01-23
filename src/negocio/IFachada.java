@@ -33,7 +33,6 @@ public interface IFachada {
 
 	boolean cadastrarEmpresa(Empresa e) throws ValorInvalidoException, UsuarioExistenteException;
 
-	
 	Empresa procurarEmpresa(String cnpj);
 
 	boolean removerEmpresa(String cnpj) throws NaoExisteException;
@@ -45,7 +44,6 @@ public interface IFachada {
 	void setRepositorioF(IRepositorioFuncionario repositorioF);
 
 	boolean cadastrarFuncionario(Funcionario f) throws ValorInvalidoException, UsuarioExistenteException;
-
 	
 	Funcionario procurarFuncionario(String cpf);
 
@@ -58,7 +56,6 @@ public interface IFachada {
 	void setRepositorioP(IRepositorioProduto repositorioP);
 
 	boolean cadastrarProduto(Produto p) throws ValorInvalidoException, UsuarioExistenteException;
-
 	
 	Produto procurarProduto(String nome);
 
@@ -69,4 +66,8 @@ public interface IFachada {
 	boolean fazerPostagem(Produto p, Funcionario f, String postagem);
 	
 	boolean fazerComentario(Produto p, Cliente c, String comentario);
+	
+	String getNomeUsuarioLogado();
+	
+	void setNomeUsuarioLogado(String usuario);
 }
