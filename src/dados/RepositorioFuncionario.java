@@ -3,6 +3,7 @@ package dados;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -10,14 +11,17 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import negocio.beans.Cliente;
-import negocio.beans.Empresa;
 import negocio.beans.Funcionario;
 
 public class RepositorioFuncionario implements IRepositorioFuncionario, Serializable {
 
-	private static final long serialVersionUID = 9129778942778379988L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static IRepositorioFuncionario instanceUser;
+	
 	private ArrayList<Funcionario> funcionarios;
 	private int next;
 
@@ -28,36 +32,68 @@ public class RepositorioFuncionario implements IRepositorioFuncionario, Serializ
 
 	public static synchronized IRepositorioFuncionario getInstance() {
 		if(instanceUser == null) {
-			instanceUser = new RepositorioFuncionario();
+			instanceUser = ler();
 		}
 		return instanceUser;
 	}
 
-	@Override
-	public void salvar() {
+	private static void salvar() {
+		if (instanceUser == null) {
+			return;
+		}
+		File out = new File("Funcionarios\\Repositorio.db");
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+
 		try {
-			File f = new File("Funcionarios\\RepositorioFuncionario.db");
-			FileOutputStream fos = new FileOutputStream(f);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			fos = new FileOutputStream(out);
+			oos = new ObjectOutputStream(fos);
 			oos.writeObject(instanceUser);
-			oos.close();
-			System.out.println("Objeto serializado com sucesso");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (IOException e) {
+				}
+			}
 		}
+	}
+	
+	private static RepositorioFuncionario ler() {
+		RepositorioFuncionario instanciaLocal = null;
+
+		File in = new File("Funcionarios\\Repositorio.db");
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+
+		try {
+			fis = new FileInputStream(in);
+			ois = new ObjectInputStream(fis);
+			Object o = ois.readObject();
+			instanciaLocal = (RepositorioFuncionario) o;
+		} catch (Exception e) {
+			instanciaLocal = new RepositorioFuncionario();
+		} finally {
+			if (ois != null) {
+				try {
+					ois.close();
+				} catch (IOException e) {
+				}
+			}
+		}
+		return instanciaLocal;
 	}
 
 
 	@Override
-	public boolean cadastrar(Funcionario f){
+	public void cadastrar(Funcionario f){
 		if (f != null) {
 			funcionarios.add(f);
 			this.next = next + 1;
-			return true;
-			//System.out.println("Funcionario Cadastrada!");
+			RepositorioFuncionario.salvar();
 		}
-		this.salvar();
-		return false; 
 	}
 
 	private int procurarIndice(String login) {
@@ -80,21 +116,27 @@ public class RepositorioFuncionario implements IRepositorioFuncionario, Serializ
 		if (i != this.next) {
 			saida = this.funcionarios.get(i);
 		} else {
-			System.out.println("O FUNCIONARIO NÃO FOI ENCONTRADO!");
+			System.out.println("O FUNCIONARIO Nï¿½O FOI ENCONTRADO!");
 		}
 
 		return saida;
 	}
 
-	public boolean remover(String login) {
+	@Override
+	public void remover(String login) {
 		if (existe(login)) {
 			Funcionario f = procurar(login);
 			this.funcionarios.remove(f);
-			return true;
-			//System.out.println("Funcionario foi removido!");
-		} else {
-			return false;
-			//System.out.println("Houve um problema! Funcionario não pode ser removido.");
+			RepositorioFuncionario.salvar();
+		} 
+	}
+	
+	@Override
+	public void alterarCliente(String login) {
+		if (getInstance().existe(login)) {
+			Funcionario c = procurar(login);
+			funcionarios.set(funcionarios.indexOf(c), c);
+			RepositorioFuncionario.salvar();
 		}
 
 	}
@@ -109,7 +151,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario, Serializ
 			existe = true;
 			System.out.println("Funcionario existe!");
 		} else {
-			System.out.println("Funcionario não existe!");
+			System.out.println("Funcionario nï¿½o existe!");
 		}
 		return existe;
 	}

@@ -87,7 +87,7 @@ public class ControladorCliente implements IControladorCliente {
 			logado = true;
 			JOptionPane.showMessageDialog(null, "LOGIN REALIZADO COM SUCESSO");
 		} else {
-			JOptionPane.showMessageDialog(null, "LOGIN NÃO REALIZADO");
+			JOptionPane.showMessageDialog(null, "LOGIN Nï¿½O REALIZADO");
 		}
 		return logado;
 	}

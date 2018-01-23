@@ -3,6 +3,7 @@ package dados;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -10,13 +11,17 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import negocio.beans.Cliente;
 import negocio.beans.Empresa;
 
 public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 
-	private static final long serialVersionUID = -1626060227666620516L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static IRepositorioEmpresa instanceUser;
+	
 	private ArrayList<Empresa> empresas;
 	private int next;
 
@@ -27,35 +32,68 @@ public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 
 	public static synchronized IRepositorioEmpresa getInstance() {
 		if(instanceUser == null) {
-			instanceUser = new RepositorioEmpresa();
+			instanceUser = ler();
 		}
 		return instanceUser;
 	}
 
-	@Override
-	public void salvar() {
+	private static void salvar() {
+		if (instanceUser == null) {
+			return;
+		}
+		File out = new File("Empresa\\Repositorio.db");
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+
 		try {
-			File f = new File("Empresas\\RepositorioEmpresa.db");
-			FileOutputStream fos = new FileOutputStream(f);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			fos = new FileOutputStream(out);
+			oos = new ObjectOutputStream(fos);
 			oos.writeObject(instanceUser);
-			oos.close();
-			System.out.println("Objeto serializado com sucesso");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (IOException e) {
+				}
+			}
 		}
+	}
+	
+	private static RepositorioEmpresa ler() {
+		RepositorioEmpresa instanciaLocal = null;
+
+		File in = new File("Empresa\\Repositorio.db");
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+
+		try {
+			fis = new FileInputStream(in);
+			ois = new ObjectInputStream(fis);
+			Object o = ois.readObject();
+			instanciaLocal = (RepositorioEmpresa) o;
+		} catch (Exception e) {
+			instanciaLocal = new RepositorioEmpresa();
+		} finally {
+			if (ois != null) {
+				try {
+					ois.close();
+				} catch (IOException e) {
+				}
+			}
+		}
+		return instanciaLocal;
 	}
 
 	@Override
-	public boolean cadastrar(Empresa e){
+	public void cadastrar(Empresa e){
 		if (e != null) {
 			empresas.add(e);
 			this.next = next + 1;
-			return true;
 			//System.out.println("Empresa Cadastrada!");
 		}
-		this.salvar();
-		return false; 
+		RepositorioEmpresa.salvar();
 	}
 
 	private int procurarIndice(String login) {
@@ -78,22 +116,27 @@ public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 		if (i != this.next) {
 			saida = this.empresas.get(i);
 		} else {
-			System.out.println("A EMPRESA NÃO FOI ENCONTRADA!");
+			System.out.println("A EMPRESA Nï¿½O FOI ENCONTRADA!");
 		}
 
 		return saida;
 	}
 
 	@Override
-	public boolean remover(String login) {
+	public void remover(String login) {
 		if (existe(login)) {
 			Empresa c = procurar(login);
 			this.empresas.remove(c);
-			return true;
-			//System.out.println("Empresa foi removida!");
-		} else {
-			return false;
-			//System.out.println("Houve um problema! Empresa não pode ser removida.");
+			RepositorioEmpresa.salvar();
+		}
+	}
+	
+	@Override
+	public void alterarEmpresa(String login) {
+		if (getInstance().existe(login)) {
+			Empresa c = procurar(login);
+			empresas.set(empresas.indexOf(c), c);
+			RepositorioEmpresa.salvar();
 		}
 
 	}
@@ -107,7 +150,7 @@ public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 			existe = true;
 			System.out.println("Empresa existe!");
 		} else {
-			System.out.println("Empresa não existe!");
+			System.out.println("Empresa nï¿½o existe!");
 		}
 		return existe;
 	}

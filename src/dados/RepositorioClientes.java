@@ -3,6 +3,7 @@ package dados;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -14,8 +15,13 @@ import negocio.beans.Cliente;
 
 public class RepositorioClientes implements IRepositorioCliente, Serializable {
 
-	private static final long serialVersionUID = 2483691135743332876L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static IRepositorioCliente instanceUser;
+	
 	private ArrayList<Cliente> clientes;
 	private int next;
 
@@ -26,38 +32,72 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 
 	public static synchronized IRepositorioCliente getInstance() {
 		if(instanceUser == null) {
-			instanceUser = new RepositorioClientes();
+			instanceUser = ler();
 		}
 		return instanceUser;
 	}
 
-	@Override
-	public void salvar() {
+	private static void salvar() {
+		if (instanceUser == null) {
+			return;
+		}
+		File out = new File("Clientes\\Repositorio.db");
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+
 		try {
-			File f = new File("Clientes\\Repositorio.db");
-			FileOutputStream fos = new FileOutputStream(f);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			fos = new FileOutputStream(out);
+			oos = new ObjectOutputStream(fos);
 			oos.writeObject(instanceUser);
-			oos.close();
-			System.out.println("Objeto serializado com sucesso");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (IOException e) {
+				}
+			}
 		}
+	}
+	
+	private static RepositorioClientes ler() {
+		RepositorioClientes instanciaLocal = null;
+
+		File in = new File("Clientes\\Repositorio.db");
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+
+		try {
+			fis = new FileInputStream(in);
+			ois = new ObjectInputStream(fis);
+			Object o = ois.readObject();
+			instanciaLocal = (RepositorioClientes) o;
+		} catch (Exception e) {
+			instanciaLocal = new RepositorioClientes();
+		} finally {
+			if (ois != null) {
+				try {
+					ois.close();
+				} catch (IOException e) {
+				}
+			}
+		}
+		return instanciaLocal;
 	}
 
 
 	@Override
-	public boolean cadastrar(Cliente c){	 //mudei pra boolean
+	public void cadastrar(Cliente c){	 //mudei pra boolean
 		if (c != null) {
 			clientes.add(c);
 			this.next = next + 1;
-			return true;
-			//System.out.println("Cliente Cadastrado!");
+			RepositorioClientes.salvar();
 		}
-		this.salvar();
-		return false; 
 	}
-
+	
+	
+	
 	private int procurarIndice(String login) {
 		int indice = 0;
 		boolean found = false;
@@ -79,7 +119,7 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 		if (i != this.next) {
 			saida = this.clientes.get(i);
 		} else {
-			System.out.println("O CLIENTE NÃO FOI ENCONTRADO!");
+			System.out.println("O CLIENTE Nï¿½O FOI ENCONTRADO!");
 		}
 
 		return saida;
@@ -91,11 +131,22 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 		if (existe(login)) {
 			Cliente c = procurar(login);
 			this.clientes.remove(c);
+			RepositorioClientes.salvar();
 			return true;
 			//System.out.println("Cliente foi removido!");
 		} else {
 			return false;
-			//System.out.println("Houve um problema! Cliente não pode ser removido.");
+			//System.out.println("Houve um problema! Cliente nï¿½o pode ser removido.");
+		}
+
+	}
+	
+	@Override
+	public void alterarCliente(String login) {
+		if (getInstance().existe(login)) {
+			Cliente c = procurar(login);
+			clientes.set(clientes.indexOf(c), c);
+			RepositorioClientes.salvar();
 		}
 
 	}
@@ -108,7 +159,7 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 			existe = true;
 			System.out.println("Cliente " + login + " existe!");
 		} else {
-			System.out.println("Cliente não existe!");
+			System.out.println("Cliente nï¿½o existe!");
 		}
 		return existe;
 	}

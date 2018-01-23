@@ -4,9 +4,10 @@ import negocio.beans.Cliente;
 
 public interface IRepositorioCliente {
 
-	void salvar();
 	
-	boolean cadastrar(Cliente c);
+//	boolean cadastrar(Cliente c);
+
+	void cadastrar(Cliente c);
 	
 	Cliente procurar(String login);
 
@@ -15,6 +16,8 @@ public interface IRepositorioCliente {
 	boolean existe(String login);
 
 	void printar(Cliente c);
+	
+	void alterarCliente(String login);
 
 	
 

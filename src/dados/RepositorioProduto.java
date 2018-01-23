@@ -3,6 +3,7 @@ package dados;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -10,8 +11,6 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import negocio.beans.Empresa;
-import negocio.beans.Funcionario;
 import negocio.beans.Produto;
 
 public class RepositorioProduto implements IRepositorioProduto, Serializable{
@@ -19,7 +18,10 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2010454631604883198L;
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
 	private static IRepositorioProduto instanceUser;
 	private ArrayList<Produto> produtos;
 	private int next;
@@ -31,7 +33,7 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable{
 
 	public static synchronized IRepositorioProduto getInstance() {
 		if(instanceUser == null) {
-			instanceUser = new RepositorioProduto();
+			instanceUser = ler();
 		}
 		return instanceUser;
 	}
@@ -39,30 +41,62 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable{
 	/* (non-Javadoc)
 	 * @see dados.IRepositorioProduto#salvar()
 	 */
-	@Override
-	public void salvar() {
+	private static void salvar() {
+		if (instanceUser == null) {
+			return;
+		}
+		File out = new File("Produtos\\Repositorio.db");
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+
 		try {
-			File f = new File("Produtos\\RepositorioProduto.db");
-			FileOutputStream fos = new FileOutputStream(f);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			fos = new FileOutputStream(out);
+			oos = new ObjectOutputStream(fos);
 			oos.writeObject(instanceUser);
-			oos.close();
-			System.out.println("Objeto serializado com sucesso");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (IOException e) {
+				}
+			}
 		}
 	}
+	
+	private static RepositorioProduto ler() {
+		RepositorioProduto instanciaLocal = null;
 
+		File in = new File("Produtos\\Repositorio.db");
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
 
-	public boolean cadastrar(Produto p){
+		try {
+			fis = new FileInputStream(in);
+			ois = new ObjectInputStream(fis);
+			Object o = ois.readObject();
+			instanciaLocal = (RepositorioProduto) o;
+		} catch (Exception e) {
+			instanciaLocal = new RepositorioProduto();
+		} finally {
+			if (ois != null) {
+				try {
+					ois.close();
+				} catch (IOException e) {
+				}
+			}
+		}
+		return instanciaLocal;
+	}
+
+	public void cadastrar(Produto p){
 		if (p != null) {
 			produtos.add(p);
 			this.next = next + 1;
-			return true;
-			//System.out.println("Produto Cadastrada!");
+			RepositorioProduto.salvar();
 		}
-		this.salvar();
-		return false; 
+		
 	}
 
 	private int procurarIndice(String nome) {
@@ -85,22 +119,28 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable{
 		if (i != this.next) {
 			saida = this.produtos.get(i);
 		} else {
-			System.out.println("O PRODUTO NÃO FOI ENCONTRADO!");
+			System.out.println("O PRODUTO Nï¿½O FOI ENCONTRADO!");
 		}
 
 		return saida;
 	}
 
 	@Override
-	public boolean remover(String nome) {
+	public void remover(String nome) {
 		if (existe(nome)) {
 			Produto p = procurar(nome);
 			this.produtos.remove(p);
-			return true;
-			//System.out.println("Produto foi removido!");
-		} else {
-			return false;
-			//System.out.println("Houve um problema! Produto não pode ser removido.");
+			RepositorioProduto.salvar();
+		} 
+
+	}
+	
+	@Override
+	public void alterarProduto(String nome) {
+		if (getInstance().existe(nome)) {
+			Produto c = procurar(nome);
+			produtos.set(produtos.indexOf(c), c);
+			RepositorioProduto.salvar();
 		}
 
 	}
@@ -113,7 +153,7 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable{
 			existe = true;
 			System.out.println("Produto existe!");
 		} else {
-			System.out.println("Produto não existe!");
+			System.out.println("Produto nï¿½o existe!");
 		}
 		return existe;
 	}
