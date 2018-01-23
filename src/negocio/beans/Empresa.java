@@ -4,18 +4,19 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 @SuppressWarnings("serial")
-public class Empresa extends Conta implements Serializable{
+public class Empresa implements Serializable{
 
 	private String nome;
 	private String cnpj;
 	private String endereco;
 	private String email;
+	private String senha;
 	private ArrayList<Pedido> pedidos;
 
-	public Empresa(String nome, String cnpj, String endereco, String email, String login, String senha){
+	public Empresa(String nome, String cnpj, String endereco, String email, String senha){
 
-		super(login, senha);
 		this.nome = nome;
+		this.senha = senha;
 		this.cnpj = cnpj;
 		this.endereco = endereco;
 		this.email = email;
@@ -83,4 +84,14 @@ public class Empresa extends Conta implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
+	
 }

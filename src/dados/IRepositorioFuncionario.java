@@ -6,14 +6,14 @@ public interface IRepositorioFuncionario {
 
 	boolean cadastrar(Funcionario c);
 
-	Funcionario procurar(String login);
+	Funcionario procurar(String cpf);
 	
-	boolean remover(String login);
+	boolean remover(String cpf);
 
-	boolean existe(String login);
+	boolean existe(String cpf);
 
 	void printar(Funcionario c);
 
-	boolean alterarCliente(String login);
+	boolean alterarCliente(String cpf);
 
 }

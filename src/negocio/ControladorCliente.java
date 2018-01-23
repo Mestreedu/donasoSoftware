@@ -11,6 +11,7 @@ import negocio.beans.Cliente;
 
 public class ControladorCliente implements IControladorCliente {
 
+	
 	private IRepositorioCliente repositorioC;
 	
 	public ControladorCliente(){
@@ -37,7 +38,7 @@ public class ControladorCliente implements IControladorCliente {
 	@Override
 	public boolean cadastrarCliente(Cliente c) throws ValorInvalidoException, UsuarioExistenteException{
 		
-		Cliente clienteExiste = this.repositorioC.procurar(c.getLogin());
+		Cliente clienteExiste = this.repositorioC.procurar(c.getCpf());
 		if(clienteExiste != null){
 			throw new UsuarioExistenteException();
 		}		
@@ -54,30 +55,33 @@ public class ControladorCliente implements IControladorCliente {
 	 * @see negocio.IControladorCliente#procurar(java.lang.String)
 	 */
 	@Override
-	public Cliente procurarCliente(String login){
-		return this.repositorioC.procurar(login);
+	public Cliente procurarCliente(String cpf){
+		return this.repositorioC.procurar(cpf);
 	}
 	
 	/* (non-Javadoc)
 	 * @see negocio.IControladorCliente#remover(java.lang.String)
 	 */
 	@Override
-	public boolean removerCliente(String login) throws NaoExisteException{
-		if(login!=null){
-			return this.repositorioC.remover(login);
+	public boolean removerCliente(String cpf) throws NaoExisteException{
+		if(cpf !=null){
+			return this.repositorioC.remover(cpf);
 		}
 		throw new NaoExisteException();
 	}
 	
+	public boolean alterarCliente(String cpf) {
+		return repositorioC.alterarCliente(cpf);
+	}
 	
 	
 	public void printar(Cliente c) {
 		repositorioC.printar(c);
 	}
 
-	public boolean loginCliente(String login, String senha) {
+	public boolean loginCliente(String cpf, String senha) {
 		boolean logado = false;
-		if (repositorioC.existe(login) && repositorioC.procurar(login).getSenha().equals(senha)) {
+		if (repositorioC.existe(cpf) && repositorioC.procurar(cpf).getSenha().equals(senha)) {
 			logado = true;
 			JOptionPane.showMessageDialog(null, "LOGIN REALIZADO COM SUCESSO");
 		} else {

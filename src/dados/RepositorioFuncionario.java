@@ -98,11 +98,11 @@ public class RepositorioFuncionario implements IRepositorioFuncionario, Serializ
 		return false;
 	}
 
-	private int procurarIndice(String login) {
+	private int procurarIndice(String cpf) {
 		int indice = 0;
 		boolean found = false;
 		while (found != true && indice < this.next) {
-			if (login.equals(this.funcionarios.get(indice).getLogin())) {
+			if (cpf.equals(this.funcionarios.get(indice).getCpf())) {
 				found = true;
 			} else {
 				indice = indice + 1;
@@ -112,22 +112,22 @@ public class RepositorioFuncionario implements IRepositorioFuncionario, Serializ
 	}
 
 	@Override
-	public Funcionario procurar(String login) {
-		int i = this.procurarIndice(login);
+	public Funcionario procurar(String cpf) {
+		int i = this.procurarIndice(cpf);
 		Funcionario saida = null;
 		if (i != this.next) {
 			saida = this.funcionarios.get(i);
 		} else {
-			System.out.println("O FUNCIONARIO N�O FOI ENCONTRADO!");
+			System.out.println("O FUNCIONARIO NAO FOI ENCONTRADO!");
 		}
 
 		return saida;
 	}
 
 	@Override
-	public boolean remover(String login) {
-		if (existe(login)) {
-			Funcionario f = procurar(login);
+	public boolean remover(String cpf) {
+		if (existe(cpf)) {
+			Funcionario f = procurar(cpf);
 			this.funcionarios.remove(f);
 			RepositorioFuncionario.salvar();
 			return true;
@@ -136,9 +136,9 @@ public class RepositorioFuncionario implements IRepositorioFuncionario, Serializ
 	}
 
 	@Override
-	public boolean alterarCliente(String login) {
-		if (getInstance().existe(login)) {
-			Funcionario c = procurar(login);
+	public boolean alterarCliente(String cpf) {
+		if (getInstance().existe(cpf)) {
+			Funcionario c = procurar(cpf);
 			funcionarios.set(funcionarios.indexOf(c), c);
 			RepositorioFuncionario.salvar();
 			return true;
@@ -149,14 +149,14 @@ public class RepositorioFuncionario implements IRepositorioFuncionario, Serializ
 
 
 	@Override
-	public boolean existe(String login) {
+	public boolean existe(String cpf) {
 		boolean existe = false;
-		Funcionario c = this.procurar(login);
+		Funcionario c = this.procurar(cpf);
 		if (c != null) {
 			existe = true;
 			System.out.println("Funcionario existe!");
 		} else {
-			System.out.println("Funcionario n�o existe!");
+			System.out.println("Funcionario nao existe!");
 		}
 		return existe;
 	}

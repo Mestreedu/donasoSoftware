@@ -2,12 +2,12 @@ package negocio.beans;
 
 public class Conta {
 
-	private String login;
+	private String cpf;
 	private String senha;
 	
-	public Conta(String login, String senha)
+	public Conta(String cpf, String senha)
 	{
-		this.login = login;
+		this.cpf = cpf;
 		this.senha  = senha;
 	}
 	
@@ -15,8 +15,8 @@ public class Conta {
 		
 	}
 	
-	public String getLogin() {
-		return login;
+	public String getCpf() {
+		return cpf;
 	}
 		
 	public String getSenha() {
@@ -24,7 +24,7 @@ public class Conta {
 	}
 	
 	public boolean equals(Conta conta){
-		if(this.login.equals(conta.login)){
+		if(this.cpf.equals(conta.cpf)){
 			if(this.senha.equals(conta.senha)){
 				return true;
 			}

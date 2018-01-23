@@ -14,11 +14,11 @@ public interface IControladorFuncionario {
 
 	boolean cadastrarFuncionario(Funcionario f) throws ValorInvalidoException, UsuarioExistenteException;
 
-	Funcionario procurarFuncionario(String login);
+	Funcionario procurarFuncionario(String cpf);
 
-	boolean removerFuncionario(String login) throws NaoExisteException;
+	boolean removerFuncionario(String cpf) throws NaoExisteException;
 
-	boolean loginFuncionario(String login, String senha);
+	boolean loginFuncionario(String cpf, String senha);
 	
 
 }

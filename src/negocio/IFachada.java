@@ -21,11 +21,11 @@ public interface IFachada {
 	boolean cadastrarCliente(Cliente c) throws ValorInvalidoException, UsuarioExistenteException;
 	
 
-	Cliente procurarCliente(String login);
+	Cliente procurarCliente(String cpf);
 
-	boolean removerCliente(String login) throws NaoExisteException;
+	boolean removerCliente(String cpf) throws NaoExisteException;
 
-	boolean loginCliente(String login, String senha);
+	boolean loginCliente(String cpf, String senha);
 
 	IRepositorioEmpresa getRepositorioE();
 
@@ -34,11 +34,11 @@ public interface IFachada {
 	boolean cadastrarEmpresa(Empresa e) throws ValorInvalidoException, UsuarioExistenteException;
 
 	
-	Empresa procurarEmpresa(String login);
+	Empresa procurarEmpresa(String cnpj);
 
-	boolean removerEmpresa(String login) throws NaoExisteException;
+	boolean removerEmpresa(String cnpj) throws NaoExisteException;
 
-	boolean loginEmpresa(String login, String senha);
+	boolean loginEmpresa(String cnpj, String senha);
 
 	IRepositorioFuncionario getRepositorioF();
 
@@ -47,11 +47,11 @@ public interface IFachada {
 	boolean cadastrarFuncionario(Funcionario f) throws ValorInvalidoException, UsuarioExistenteException;
 
 	
-	Funcionario procurarFuncionario(String login);
+	Funcionario procurarFuncionario(String cpf);
 
-	boolean removerFuncionario(String login) throws NaoExisteException;
+	boolean removerFuncionario(String cpf) throws NaoExisteException;
 
-	boolean loginFuncionario(String login, String senha);
+	boolean loginFuncionario(String cpf, String senha);
 
 	IRepositorioProduto getRepositorioP();
 
@@ -64,7 +64,7 @@ public interface IFachada {
 
 	boolean removerProduto(String nome) throws NaoExisteException;
 	
-	Object checarTipo(String login);
+	Object checarTipo(String cpf);
 
 	boolean fazerPostagem(Produto p, Funcionario f, String postagem);
 	

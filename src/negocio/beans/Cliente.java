@@ -7,16 +7,14 @@ import java.util.ArrayList;
 public class Cliente extends Conta implements Serializable{
 
 	private String nome;
-	private String cpf;
 	private String endereco;
 	private String email;
 	private ArrayList<Pedido> pedidos;
 
-	public Cliente(String nome, String cpf, String endereco, String email, String login, String senha){
+	public Cliente(String nome, String cpf, String endereco, String email, String senha){
 
 		super(cpf, senha);
 		this.nome = nome;
-		this.cpf = cpf;
 		this.endereco = endereco;
 		this.email = email;
 		this.pedidos = new ArrayList<Pedido>();
@@ -32,14 +30,6 @@ public class Cliente extends Conta implements Serializable{
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 
 	public String getEndereco() {

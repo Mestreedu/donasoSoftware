@@ -9,15 +9,15 @@ public interface IRepositorioCliente {
 
 	boolean cadastrar(Cliente c);
 	
-	Cliente procurar(String login);
+	Cliente procurar(String cpf);
 
-	boolean remover(String login);
+	boolean remover(String cpf);
 
-	boolean existe(String login);
+	boolean existe(String cpf);
 
 	void printar(Cliente c);
 	
-	boolean alterarCliente(String login);
+	boolean alterarCliente(String cpf);
 
 	
 

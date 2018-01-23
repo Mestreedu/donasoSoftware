@@ -63,24 +63,24 @@ public class Fachada implements IFachada {
 	 */
 	
 	@Override
-	public Cliente procurarCliente(String login) {
-		return controladorCliente.procurarCliente(login);
+	public Cliente procurarCliente(String cpf) {
+		return controladorCliente.procurarCliente(cpf);
 	}
 
 	/* (non-Javadoc)
 	 * @see negocio.IFachada#removerCliente(java.lang.String)
 	 */
 	@Override
-	public boolean removerCliente(String login) throws NaoExisteException {
-		return controladorCliente.removerCliente(login);
+	public boolean removerCliente(String cpf) throws NaoExisteException {
+		return controladorCliente.removerCliente(cpf);
 	}
 
 	/* (non-Javadoc)
 	 * @see negocio.IFachada#loginCliente(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public boolean loginCliente(String login, String senha) {
-		return controladorCliente.loginCliente(login, senha);
+	public boolean loginCliente(String cpf, String senha) {
+		return controladorCliente.loginCliente(cpf, senha);
 	}
 
 	/* (non-Javadoc)
@@ -113,24 +113,24 @@ public class Fachada implements IFachada {
 
 	
 	@Override
-	public Empresa procurarEmpresa(String login) {
-		return controladorEmpresa.procurarEmpresa(login);
+	public Empresa procurarEmpresa(String cnpj) {
+		return controladorEmpresa.procurarEmpresa(cnpj);
 	}
 
 	/* (non-Javadoc)
 	 * @see negocio.IFachada#removerEmpresa(java.lang.String)
 	 */
 	@Override
-	public boolean removerEmpresa(String login) throws NaoExisteException {
-		return controladorEmpresa.removerEmpresa(login);
+	public boolean removerEmpresa(String cnpj) throws NaoExisteException {
+		return controladorEmpresa.removerEmpresa(cnpj);
 	}
 
 	/* (non-Javadoc)
 	 * @see negocio.IFachada#loginEmpresa(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public boolean loginEmpresa(String login, String senha) {
-		return controladorEmpresa.loginEmpresa(login, senha);
+	public boolean loginEmpresa(String cnpj, String senha) {
+		return controladorEmpresa.loginEmpresa(cnpj, senha);
 	}
 
 	/* (non-Javadoc)
@@ -163,24 +163,24 @@ public class Fachada implements IFachada {
 
 	
 	@Override
-	public Funcionario procurarFuncionario(String login) {
-		return controladorFuncionario.procurarFuncionario(login);
+	public Funcionario procurarFuncionario(String cpf) {
+		return controladorFuncionario.procurarFuncionario(cpf);
 	}
 
 	/* (non-Javadoc)
 	 * @see negocio.IFachada#removerFuncionario(java.lang.String)
 	 */
 	@Override
-	public boolean removerFuncionario(String login) throws NaoExisteException {
-		return controladorFuncionario.removerFuncionario(login);
+	public boolean removerFuncionario(String cpf) throws NaoExisteException {
+		return controladorFuncionario.removerFuncionario(cpf);
 	}
 
 	/* (non-Javadoc)
 	 * @see negocio.IFachada#loginFuncionario(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public boolean loginFuncionario(String login, String senha) {
-		return controladorFuncionario.loginFuncionario(login, senha);
+	public boolean loginFuncionario(String cpf, String senha) {
+		return controladorFuncionario.loginFuncionario(cpf, senha);
 	}
 
 	/* (non-Javadoc)
@@ -225,13 +225,13 @@ public class Fachada implements IFachada {
 		return controladorProduto.removerProduto(nome);
 	}
 
-	public Object checarTipo(String login) {
-		if(this.procurarCliente(login) != null) {
-			return this.procurarCliente(login).getClass();
-		} else if(this.procurarEmpresa(login) != null) {
-			return this.procurarEmpresa(login).getClass();
-		} else if(this.procurarFuncionario(login) != null) {
-			return this.procurarFuncionario(login).getClass();
+	public Object checarTipo(String cpf_Cnpj) {
+		if(this.procurarCliente(cpf_Cnpj) != null) {
+			return this.procurarCliente(cpf_Cnpj).getClass();
+		} else if(this.procurarEmpresa(cpf_Cnpj) != null) {
+			return this.procurarEmpresa(cpf_Cnpj).getClass();
+		} else if(this.procurarFuncionario(cpf_Cnpj) != null) {
+			return this.procurarFuncionario(cpf_Cnpj).getClass();
 		} else {
 			return Object.class;
 		}
@@ -241,7 +241,7 @@ public class Fachada implements IFachada {
 		boolean permissao = false;
 		String msg = null;
 		if(p!=null && f!= null && p.getFuncionarios().contains(f)) {
-			msg = f.getLogin() + ": " + postagem;
+			msg = f.getCpf() + ": " + postagem;
 			p.addPostagem(msg);
 			permissao = true;
 		} else {
@@ -253,8 +253,8 @@ public class Fachada implements IFachada {
 	public boolean fazerComentario(Produto p, Cliente c, String comentario) {
 		boolean permissao = false;
 		String msg = null;
-		if(p!=null && c!=null && p.getCliente().getLogin() == c.getLogin()) {
-			msg = c.getLogin() + ": " + comentario;
+		if(p!=null && c!=null && p.getCliente().getCpf() == c.getCpf()) {
+			msg = c.getCpf() + ": " + comentario;
 			p.addComentario(msg);
 			permissao = true;
 		} else {

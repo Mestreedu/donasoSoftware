@@ -23,11 +23,11 @@ public interface IControladorEmpresa {
 	 */
 	boolean cadastrarEmpresa(Empresa e) throws ValorInvalidoException, UsuarioExistenteException;
 
-	Empresa procurarEmpresa(String login);
+	Empresa procurarEmpresa(String cnpj);
 
-	boolean removerEmpresa(String login) throws NaoExisteException;
+	boolean removerEmpresa(String cnpj) throws NaoExisteException;
 
-	boolean loginEmpresa(String login, String senha);
+	boolean loginEmpresa(String cnpj, String senha);
 	
 
 }

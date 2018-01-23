@@ -97,11 +97,11 @@ public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 		return false;
 	}
 
-	private int procurarIndice(String login) {
+	private int procurarIndice(String cnpj) {
 		int indice = 0;
 		boolean found = false;
 		while (found != true && indice < this.next) {
-			if (login.equals(this.empresas.get(indice).getLogin())) {
+			if (cnpj.equals(this.empresas.get(indice).getCnpj())) {
 				found = true;
 			} else {
 				indice = indice + 1;
@@ -111,22 +111,22 @@ public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 	}
 
 	@Override
-	public Empresa procurar(String login) {
-		int i = this.procurarIndice(login);
+	public Empresa procurar(String cnpj) {
+		int i = this.procurarIndice(cnpj);
 		Empresa saida = null;
 		if (i != this.next) {
 			saida = this.empresas.get(i);
 		} else {
-			System.out.println("A EMPRESA N�O FOI ENCONTRADA!");
+			System.out.println("A EMPRESA NAO FOI ENCONTRADA!");
 		}
 
 		return saida;
 	}
 
 	@Override
-	public boolean remover(String login) {
-		if (existe(login)) {
-			Empresa c = procurar(login);
+	public boolean remover(String cnpj) {
+		if (existe(cnpj)) {
+			Empresa c = procurar(cnpj);
 			this.empresas.remove(c);
 			RepositorioEmpresa.salvar();
 			return true;
@@ -135,9 +135,9 @@ public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 	}
 
 	@Override
-	public boolean alterarEmpresa(String login) {
-		if (getInstance().existe(login)) {
-			Empresa c = procurar(login);
+	public boolean alterarEmpresa(String cnpj) {
+		if (getInstance().existe(cnpj)) {
+			Empresa c = procurar(cnpj);
 			empresas.set(empresas.indexOf(c), c);
 			RepositorioEmpresa.salvar();
 			return true;
@@ -147,14 +147,14 @@ public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 
 
 	@Override
-	public boolean existe(String login) {
+	public boolean existe(String cnpj) {
 		boolean existe = false;
-		Empresa u = this.procurar(login);
+		Empresa u = this.procurar(cnpj);
 		if (u != null) {
 			existe = true;
 			System.out.println("Empresa existe!");
 		} else {
-			System.out.println("Empresa n�o existe!");
+			System.out.println("Empresa nao existe!");
 		}
 		return existe;
 	}

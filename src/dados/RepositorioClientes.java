@@ -101,11 +101,11 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 
 
 
-	private int procurarIndice(String login) {
+	private int procurarIndice(String cpf) {
 		int indice = 0;
 		boolean found = false;
 		while (found != true && indice < this.next) {
-			if (login.equals(this.clientes.get(indice).getLogin())) {
+			if (cpf.equals(this.clientes.get(indice).getCpf())) {
 				found = true;
 			} else {
 				indice = indice + 1;
@@ -116,13 +116,13 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 
 
 	@Override
-	public Cliente procurar(String login) {
-		int i = this.procurarIndice(login);
+	public Cliente procurar(String cpf) {
+		int i = this.procurarIndice(cpf);
 		Cliente saida = null;
 		if (i != this.next) {
 			saida = this.clientes.get(i);
 		} else {
-			System.out.println("O CLIENTE N�O FOI ENCONTRADO!");
+			System.out.println("O CLIENTE NAO FOI ENCONTRADO!");
 		}
 
 		return saida;
@@ -130,9 +130,9 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 
 
 	@Override
-	public boolean remover(String login) { // mudei pra boolean
-		if (existe(login)) {
-			Cliente c = procurar(login);
+	public boolean remover(String cpf) { // mudei pra boolean
+		if (this.existe(cpf)) {
+			Cliente c = procurar(cpf);
 			this.clientes.remove(c);
 			RepositorioClientes.salvar();
 			return true;
@@ -145,9 +145,9 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 	}
 
 	@Override
-	public boolean alterarCliente(String login) {
-		if (getInstance().existe(login)) {
-			Cliente c = procurar(login);
+	public boolean alterarCliente(String cpf) {
+		if (getInstance().existe(cpf)) {
+			Cliente c = procurar(cpf);
 			clientes.set(clientes.indexOf(c), c);
 			RepositorioClientes.salvar();
 			return true;
@@ -157,14 +157,14 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 	}
 
 	@Override
-	public boolean existe(String login) {
+	public boolean existe(String cpf) {
 		boolean existe = false;
-		Cliente c = this.procurar(login);
+		Cliente c = this.procurar(cpf);
 		if (c != null) {
 			existe = true;
-			System.out.println("Cliente " + login + " existe!");
+			System.out.println("Cliente existe!");
 		} else {
-			System.out.println("Cliente n�o existe!");
+			System.out.println("Cliente nao existe!");
 		}
 		return existe;
 	}

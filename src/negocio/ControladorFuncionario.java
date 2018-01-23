@@ -37,7 +37,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
 	@Override
 	public boolean cadastrarFuncionario(Funcionario f) throws ValorInvalidoException, UsuarioExistenteException {
 
-		Funcionario funcionarioExiste = this.repositorioF.procurar(f.getLogin());
+		Funcionario funcionarioExiste = this.repositorioF.procurar(f.getCpf());
 		if (funcionarioExiste != null) {
 			throw new UsuarioExistenteException();
 		}
@@ -54,8 +54,13 @@ public class ControladorFuncionario implements IControladorFuncionario {
 	 * @see negocio.IControladorFuncionario#procurar(java.lang.String)
 	 */
 	@Override
-	public Funcionario procurarFuncionario(String login) {
-		return this.repositorioF.procurar(login);
+	public Funcionario procurarFuncionario(String cpf) {
+		return this.repositorioF.procurar(cpf);
+	}
+
+	
+	public boolean alterarCliente(String cpf) {
+		return repositorioF.alterarCliente(cpf);
 	}
 
 	/* (non-Javadoc)
@@ -75,13 +80,13 @@ public class ControladorFuncionario implements IControladorFuncionario {
 	 * @see negocio.IControladorFuncionario#login(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public boolean loginFuncionario(String login, String senha) {
+	public boolean loginFuncionario(String cpf, String senha) {
 		boolean logado = false;
-		if (repositorioF.existe(login) && repositorioF.procurar(login).getSenha().equals(senha)) {
+		if (repositorioF.existe(cpf) && repositorioF.procurar(cpf).getSenha().equals(senha)) {
 			logado = true;
 			JOptionPane.showMessageDialog(null, "LOGIN REALIZADO COM SUCESSO");
 		} else {
-			JOptionPane.showMessageDialog(null, "LOGIN N�O REALIZADO");
+			JOptionPane.showMessageDialog(null, "LOGIN NAO REALIZADO");
 		}
 		return logado;
 	}

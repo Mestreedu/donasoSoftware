@@ -43,7 +43,7 @@ private IRepositorioEmpresa repositorioE;
 	 */
 	public boolean cadastrarEmpresa(Empresa e) throws ValorInvalidoException, UsuarioExistenteException{
 		
-		Empresa empresaExiste = this.repositorioE.procurar(e.getLogin());
+		Empresa empresaExiste = this.repositorioE.procurar(e.getCnpj());
 		if(empresaExiste != null){
 			throw new UsuarioExistenteException();
 		}		
@@ -61,11 +61,16 @@ private IRepositorioEmpresa repositorioE;
 	 * @see negocio.IControladorEmpresa#procurar(java.lang.String)
 	 */
 	@Override
-	public Empresa procurarEmpresa(String login){
-		return this.repositorioE.procurar(login);
+	public Empresa procurarEmpresa(String cpf){
+		return this.repositorioE.procurar(cpf);
 	}
 	
 	
+	
+	public boolean alterarEmpresa(String cpf) {
+		return repositorioE.alterarEmpresa(cpf);
+	}
+
 	/* (non-Javadoc)
 	 * @see negocio.IControladorEmpresa#remover(java.lang.String)
 	 */
@@ -81,9 +86,9 @@ private IRepositorioEmpresa repositorioE;
 	 * @see negocio.IControladorEmpresa#login(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public boolean loginEmpresa(String login, String senha) {
+	public boolean loginEmpresa(String cpf, String senha) {
 		boolean logado = false;
-		if (repositorioE.existe(login) && repositorioE.procurar(login).getSenha().equals(senha)) {
+		if (repositorioE.existe(cpf) && repositorioE.procurar(cpf).getSenha().equals(senha)) {
 			logado = true;
 			JOptionPane.showMessageDialog(null, "LOGIN REALIZADO COM SUCESSO");
 		} else {

@@ -8,14 +8,14 @@ public interface IRepositorioEmpresa {
 
 	boolean cadastrar(Empresa u);
 
-	Empresa procurar(String login);
+	Empresa procurar(String cnpj);
 
-	boolean remover(String login);
+	boolean remover(String cnpj);
 
-	boolean existe(String login);
+	boolean existe(String cnpj);
 
 	void printar(Empresa u);
 
-	boolean alterarEmpresa(String login);
+	boolean alterarEmpresa(String cnpj);
 
 }

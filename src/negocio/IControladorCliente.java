@@ -14,11 +14,11 @@ public interface IControladorCliente {
 
 	boolean cadastrarCliente(Cliente c) throws ValorInvalidoException, UsuarioExistenteException;
 
-	Cliente procurarCliente(String login);
+	Cliente procurarCliente(String cpf);
 
-	boolean removerCliente(String login) throws NaoExisteException;
+	boolean removerCliente(String cpf) throws NaoExisteException;
 	
-	boolean loginCliente(String login, String senha);
+	boolean loginCliente(String cpf, String senha);
 	
 
 }
