@@ -7,7 +7,7 @@ public interface IRepositorioCliente {
 	
 //	boolean cadastrar(Cliente c);
 
-	void cadastrar(Cliente c);
+	boolean cadastrar(Cliente c);
 	
 	Cliente procurar(String login);
 
@@ -17,7 +17,7 @@ public interface IRepositorioCliente {
 
 	void printar(Cliente c);
 	
-	void alterarCliente(String login);
+	boolean alterarCliente(String login);
 
 	
 

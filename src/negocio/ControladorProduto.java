@@ -24,9 +24,6 @@ public class ControladorProduto implements IControladorProduto {
 		this.repositorioP = repositorioP;
 	}
 
-	public void salvarProduto() {
-		repositorioP.salvar();
-	}
 
 	@Override
 	public boolean cadastrarProduto(Produto p) throws ValorInvalidoException, UsuarioExistenteException {

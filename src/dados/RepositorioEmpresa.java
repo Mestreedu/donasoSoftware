@@ -87,13 +87,14 @@ public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 	}
 
 	@Override
-	public void cadastrar(Empresa e){
+	public boolean cadastrar(Empresa e){
 		if (e != null) {
 			empresas.add(e);
 			this.next = next + 1;
-			//System.out.println("Empresa Cadastrada!");
+			RepositorioEmpresa.salvar();
+			return true;
 		}
-		RepositorioEmpresa.salvar();
+		return false;
 	}
 
 	private int procurarIndice(String login) {
@@ -123,22 +124,25 @@ public class RepositorioEmpresa implements IRepositorioEmpresa, Serializable {
 	}
 
 	@Override
-	public void remover(String login) {
+	public boolean remover(String login) {
 		if (existe(login)) {
 			Empresa c = procurar(login);
 			this.empresas.remove(c);
 			RepositorioEmpresa.salvar();
+			return true;
 		}
+		return false;
 	}
 	
 	@Override
-	public void alterarEmpresa(String login) {
+	public boolean alterarEmpresa(String login) {
 		if (getInstance().existe(login)) {
 			Empresa c = procurar(login);
 			empresas.set(empresas.indexOf(c), c);
 			RepositorioEmpresa.salvar();
+			return true;
 		}
-
+		return false;
 	}
 
 	

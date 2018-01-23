@@ -90,13 +90,14 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable{
 		return instanciaLocal;
 	}
 
-	public void cadastrar(Produto p){
+	public boolean cadastrar(Produto p){
 		if (p != null) {
 			produtos.add(p);
 			this.next = next + 1;
 			RepositorioProduto.salvar();
+			return true;
 		}
-		
+		return false;		
 	}
 
 	private int procurarIndice(String nome) {
@@ -126,22 +127,25 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable{
 	}
 
 	@Override
-	public void remover(String nome) {
+	public boolean remover(String nome) {
 		if (existe(nome)) {
 			Produto p = procurar(nome);
 			this.produtos.remove(p);
 			RepositorioProduto.salvar();
+			return true;
 		} 
-
+		return false;
 	}
 	
 	@Override
-	public void alterarProduto(String nome) {
+	public boolean alterarProduto(String nome) {
 		if (getInstance().existe(nome)) {
 			Produto c = procurar(nome);
 			produtos.set(produtos.indexOf(c), c);
 			RepositorioProduto.salvar();
+			return true;
 		}
+		return false;
 
 	}
 

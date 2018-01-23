@@ -18,6 +18,5 @@ public interface IControladorProduto {
 
 	boolean removerProduto(String nome) throws NaoExisteException;
 	
-	void salvarProduto();
 
 }

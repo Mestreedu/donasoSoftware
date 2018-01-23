@@ -88,12 +88,15 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 
 
 	@Override
-	public void cadastrar(Cliente c){	 //mudei pra boolean
+	public boolean cadastrar(Cliente c){	 //mudei pra boolean
 		if (c != null) {
 			clientes.add(c);
 			this.next = next + 1;
 			RepositorioClientes.salvar();
+			return true;
 		}
+			return false;
+	
 	}
 	
 	
@@ -142,12 +145,14 @@ public class RepositorioClientes implements IRepositorioCliente, Serializable {
 	}
 	
 	@Override
-	public void alterarCliente(String login) {
+	public boolean alterarCliente(String login) {
 		if (getInstance().existe(login)) {
 			Cliente c = procurar(login);
 			clientes.set(clientes.indexOf(c), c);
 			RepositorioClientes.salvar();
-		}
+			return true;
+		} 
+			return false;
 
 	}
 

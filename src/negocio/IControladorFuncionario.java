@@ -20,6 +20,5 @@ public interface IControladorFuncionario {
 
 	boolean loginFuncionario(String login, String senha);
 	
-	void salvarFuncionario();
 
 }

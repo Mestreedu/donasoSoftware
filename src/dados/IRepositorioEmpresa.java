@@ -6,16 +6,16 @@ public interface IRepositorioEmpresa {
 
 //	void salvar();
 
-	void cadastrar(Empresa u);
+	boolean cadastrar(Empresa u);
 
 	Empresa procurar(String login);
 
-	void remover(String login);
+	boolean remover(String login);
 
 	boolean existe(String login);
 
 	void printar(Empresa u);
 
-	void alterarEmpresa(String login);
+	boolean alterarEmpresa(String login);
 
 }

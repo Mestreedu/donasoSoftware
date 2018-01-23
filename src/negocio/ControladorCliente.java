@@ -17,12 +17,6 @@ public class ControladorCliente implements IControladorCliente {
 		this.repositorioC = RepositorioClientes.getInstance(); 
 	}
 	
-	/* (non-Javadoc)
-	 * @see negocio.IControladorCliente#getRepositorioC()
-	 */
-	public void salvarCliente() {
-		repositorioC.salvar();
-	}
 	
 	@Override
 	public IRepositorioCliente getRepositorioC() {

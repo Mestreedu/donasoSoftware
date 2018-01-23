@@ -20,7 +20,6 @@ public interface IFachada {
 
 	boolean cadastrarCliente(Cliente c) throws ValorInvalidoException, UsuarioExistenteException;
 	
-	void salvarCliente();
 
 	Cliente procurarCliente(String login);
 
@@ -34,7 +33,6 @@ public interface IFachada {
 
 	boolean cadastrarEmpresa(Empresa e) throws ValorInvalidoException, UsuarioExistenteException;
 
-	void salvarEmpresa();
 	
 	Empresa procurarEmpresa(String login);
 
@@ -48,7 +46,6 @@ public interface IFachada {
 
 	boolean cadastrarFuncionario(Funcionario f) throws ValorInvalidoException, UsuarioExistenteException;
 
-	void salvarFuncionario();
 	
 	Funcionario procurarFuncionario(String login);
 
@@ -62,7 +59,6 @@ public interface IFachada {
 
 	boolean cadastrarProduto(Produto p) throws ValorInvalidoException, UsuarioExistenteException;
 
-	void salvarProduto();
 	
 	Produto procurarProduto(String nome);
 

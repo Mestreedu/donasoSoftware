@@ -27,9 +27,6 @@ private IRepositorioEmpresa repositorioE;
 		return repositorioE;
 	}
 
-	public void salvarEmpresa() {
-		repositorioE.salvar();
-	}
 	/* (non-Javadoc)
 	 * @see negocio.IControladorCliente#setRepositorioC(dados.IRepositorioCliente)
 	 */
@@ -90,7 +87,7 @@ private IRepositorioEmpresa repositorioE;
 			logado = true;
 			JOptionPane.showMessageDialog(null, "LOGIN REALIZADO COM SUCESSO");
 		} else {
-			JOptionPane.showMessageDialog(null, "LOGIN NÃO REALIZADO");
+			JOptionPane.showMessageDialog(null, "LOGIN Nï¿½O REALIZADO");
 		}
 		return logado;
 	}

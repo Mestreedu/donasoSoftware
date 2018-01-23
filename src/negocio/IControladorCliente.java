@@ -20,6 +20,5 @@ public interface IControladorCliente {
 	
 	boolean loginCliente(String login, String senha);
 	
-	void salvarCliente();
 
 }

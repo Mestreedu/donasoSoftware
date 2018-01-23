@@ -29,6 +29,5 @@ public interface IControladorEmpresa {
 
 	boolean loginEmpresa(String login, String senha);
 	
-	void salvarEmpresa();
 
 }

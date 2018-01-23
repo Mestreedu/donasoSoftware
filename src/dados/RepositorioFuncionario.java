@@ -88,12 +88,14 @@ public class RepositorioFuncionario implements IRepositorioFuncionario, Serializ
 
 
 	@Override
-	public void cadastrar(Funcionario f){
+	public boolean cadastrar(Funcionario f){
 		if (f != null) {
 			funcionarios.add(f);
 			this.next = next + 1;
 			RepositorioFuncionario.salvar();
+			return true;
 		}
+		return false;
 	}
 
 	private int procurarIndice(String login) {
@@ -123,22 +125,25 @@ public class RepositorioFuncionario implements IRepositorioFuncionario, Serializ
 	}
 
 	@Override
-	public void remover(String login) {
+	public boolean remover(String login) {
 		if (existe(login)) {
 			Funcionario f = procurar(login);
 			this.funcionarios.remove(f);
 			RepositorioFuncionario.salvar();
+			return true;
 		} 
+		return false;
 	}
 	
 	@Override
-	public void alterarCliente(String login) {
+	public boolean alterarCliente(String login) {
 		if (getInstance().existe(login)) {
 			Funcionario c = procurar(login);
 			funcionarios.set(funcionarios.indexOf(c), c);
 			RepositorioFuncionario.salvar();
+			return true;
 		}
-
+		return false;
 	}
 
 
